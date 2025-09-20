@@ -2,6 +2,8 @@
 
 A Flutter widget that renders a stream of characters with a Matrix-style green glow effect. Set the background to black for the authentic Matrix look.
 
+<img width="611" height="354" alt="image" src="https://github.com/user-attachments/assets/44ea4415-9c63-412a-a458-a54b4f619cb2" />
+
 ## Features
 
 - Stream-based character rendering with typing animation
