@@ -1,39 +1,74 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Matrix Terminal
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter widget that renders a stream of characters with a Matrix-style green glow effect. Set the background to black for the authentic Matrix look.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Stream-based character rendering with typing animation
+- Matrix-style green glow effect with multiple shadow layers
+- Animated blinking cursor
+- Customizable text color and style
+- Built-in Courier New font for authentic terminal appearance
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  matrix_terminal: VERSION
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:matrix_terminal/matrix_terminal.dart';
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Container(
+        color: Colors.black, // Black background for authentic Matrix look
+        child: MatrixTerminal(
+          characterStream: yourCharacterStream(),
+        ),
+      ),
+    );
+  }
+}
+
+// Example character stream
+Stream<String> yourCharacterStream() async* {
+  var text = "Welcome to the Matrix...";
+  for (int i = 0; i < text.length; i++) {
+    await Future.delayed(Duration(milliseconds: 50));
+    yield text[i];
+  }
+}
 ```
 
-## Additional information
+## Parameters
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- `characterStream` (required): A `Stream<String>` that provides characters to display
+- `textColor`: Color of the text (default: Matrix green `Color.fromARGB(255, 107, 255, 119)`)
+- `style`: Optional `TextStyle` to customize font properties
+
+## Example
+
+The example demonstrates a simple implementation with a mock AI response stream:
+
+```dart
+Stream<String> mockAiAnswser() async* {
+  var answer = 'Machine learning is a subset of artificial intelligence...';
+  for (int i = 0; i < answer.length; i++) {
+    await Future.delayed(Duration(milliseconds: 25));
+    yield answer[i];
+  }
+}
+```
+
+## License
+
+This project is open source and available under the MIT License.
