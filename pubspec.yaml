@@ -1,0 +1,23 @@
+name: matrix_terminal
+description: "A Flutter widget that renders a stream of characters with a Matrix-style green glow effect. Set the background to black for the authentic Matrix look."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.9.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  fonts:
+    - family: CourierNew
+      fonts:
+        - asset: packages/matrix_terminal/fonts/courier_new.ttf
