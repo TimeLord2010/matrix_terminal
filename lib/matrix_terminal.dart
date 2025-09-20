@@ -8,6 +8,28 @@ class MatrixTerminal extends StatefulWidget {
     this.textColor = const Color.fromARGB(255, 107, 255, 119),
   });
 
+  factory MatrixTerminal.fromString(
+    String text, {
+    Key? key,
+    TextStyle? style,
+    Color textColor = const Color.fromARGB(255, 107, 255, 119),
+    Duration delay = const Duration(milliseconds: 25),
+  }) {
+    return MatrixTerminal(
+      key: key,
+      characterStream: _createStreamFromString(text, delay),
+      style: style,
+      textColor: textColor,
+    );
+  }
+
+  static Stream<String> _createStreamFromString(String text, Duration delay) async* {
+    for (int i = 0; i < text.length; i++) {
+      await Future.delayed(delay);
+      yield text[i];
+    }
+  }
+
   final Stream<String> characterStream;
   final Color textColor;
   final TextStyle? style;
