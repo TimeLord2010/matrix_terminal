@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Container(
         color: Colors.black,
+        padding: EdgeInsets.all(10),
         child: MatrixTerminal(characterStream: mockAiAnswser()),
       ),
     );
